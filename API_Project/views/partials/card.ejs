@@ -1,0 +1,16 @@
+<div class="card_container">
+
+    <div class="card">
+        <% console.log(movie) %>     
+        <h1> <%= movie.title %> </h1>
+ 
+        <% let poster = movie.poster_path ? `https://image.tmdb.org/t/p/w200/${movie.poster_path}` : 'assets/avatar.jpg' %> 
+        <img src=<%= poster %>  alt=<%= movie.title %> >
+ 
+        <p class="plot">
+            <span>PLOT:</span>
+            <%= movie.overview || "No plot given" %> 
+        </p>
+    </div>
+ 
+ </div>
