@@ -1,17 +1,13 @@
 //Foundation - importing the modules
 const express = require('express');
 const app = express();
-
 const logger = require("morgan");
-app.use(logger("dev"));
-
 const request = require('request');
-
 const key = require('./config/keys') // getting access to the api key
-
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));  // import CSS
+app.use(logger("dev"));
 
 // Route handlers
 app.get('/', (req, res) => {
@@ -23,7 +19,6 @@ app.get('/', (req, res) => {
 //https://api.themoviedb.org/3/search/movie?api_key=&query=Avengers&page=1&include_adult=false
 
 const baseUrl = "https://api.themoviedb.org/3";
-
 
 app.get('/getMovies', (req, res) => {
     // console.log(req)
