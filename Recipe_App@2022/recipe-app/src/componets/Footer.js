@@ -35,7 +35,7 @@ function Footer() {
             <hr />
             <div className='row'>
                     <p  className='col-sm'>
-                        &copy;{new Date().getFullYear()} IdreamBig INC | All Rights Reserved | Terms of Service | Privacy
+                        &copy;{new Date().getFullYear()} IdreamBig INC | All Rights reserved | Terms of Service | Privacy
                     </p>
             </div>
     </footer>

@@ -7,6 +7,7 @@ export const useLogout = () => {
     const [error, setError] = useState(null);
     const [isPending, setIsPending] = useState(false);
 
+
     // using useAuthContext hook
     const { dispatch, user } =  useAuthContext();
 
@@ -19,19 +20,20 @@ const logout = async () => {
      //update online status
      const { uid } = user
      
-     await projectFirestore.collection('users').doc(uid).update({online: false}) // chnaging document
+     await projectFirestore.collection('users').doc(uid).update({online: false}) // changing the document
 
      await projectAuth.signOut()
 
         // dispatch  logout action
-        dispatch({ type: "LOGOUT"}) // here we dont have to pass the payload - since the user going to null atm
+        dispatch({ type: "LOGOUT"}) // here we dont have to pass the payload - since the user going be to null atm
         
         // update state
         if(!isCanclled) {
             setIsPending(false);
             setError(null)
         }
-     
+
+    
     }
     catch(err) {
         if(!isCanclled){
@@ -43,7 +45,7 @@ const logout = async () => {
 }
 
 useEffect(() => {
-    // returning the cleaning up function 
+    // cleaning up function 
     return () => setIsCanclled(true)
 
 }, [])

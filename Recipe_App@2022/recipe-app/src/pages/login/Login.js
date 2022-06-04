@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLogin } from '../../hooks/useLogin';
+import { Helmet} from 'react-helmet';
 
 
 export default function Signup() {
@@ -17,6 +18,17 @@ const handleSubmit = (e) => {
 
   return (
       <form className='signup-form' onSubmit={handleSubmit}>
+         <Helmet >
+              <title> StartCooking | Login</title>
+              <meta
+                  name='description'
+                  content='Login for the existing users'
+               />
+              <meta
+                  name='keyword'
+                  content='login, sign in'
+               />
+         </Helmet>
 
           <h2>Login</h2>
 
@@ -44,7 +56,7 @@ const handleSubmit = (e) => {
           { error && <div className='error'> {error}</div>}
           
           { !isPending && <button className="btn">Login </button> }
-          { isPending && <button className='btn' disabled>loading...</button> }
+          { isPending && <button className='btn' disabled>logging in...</button> }
           
       </form>
   )

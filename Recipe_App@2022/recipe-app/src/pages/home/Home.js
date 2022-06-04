@@ -1,5 +1,6 @@
 import { useCollection } from '../../hooks/useCollection';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import Helmet from 'react-helmet';
  
 // import styles
 import './Home.css';
@@ -16,6 +17,17 @@ function Home() {
 
   return (
     <div className='home'>
+        <Helmet >
+            <title>StartCooking | Home</title>
+            <meta
+                name='description'
+                content='Recipes for different kinds of food'
+             />
+            <meta
+                name='keyword'
+                content='recipes, foods'
+             />
+        </Helmet>
             {error && <p className='error'> {error} </p> }
             { documents && <RecipeList recipes={ documents} />}
  

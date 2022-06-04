@@ -1,5 +1,6 @@
 import {BrowserRouter, Routes, Route, Link, Navigate} from 'react-router-dom';
 import { useAuthContext }  from './hooks/useAuthContext';
+import {Helmet} from 'react-helmet';
 
 import './App.css';
 
@@ -22,27 +23,26 @@ function App() {
     <div className="App">
   
      { authIsReady && (
-        <div className='content-wrap'>
-          <BrowserRouter>
-             <ScrollToTop />
-                <NavbarMain />
-                <Routes>
-                  <Route path='/' 
-                      element={  <Home /> }/> 
-                  <Route path='/create'
-                      element={ user ? <Create /> : <Navigate to='login'/>} />
-                  <Route path='/recipes/:id' element={<Recipe />} />
-                  <Route path='/login'
-                      element={ !user ? <Login/> : <Navigate to='/create' />} /> 
-                  <Route path='/signup' 
-                      element={ !user ?  <Signup /> : <Navigate to='/create'/>} /> 
-                </Routes>
+          <div className='content-wrap'>
+                <BrowserRouter>
+                  <ScrollToTop />
+                      <NavbarMain />
+                      <Routes>
+                        <Route path='/' 
+                            element={  <Home /> }/> 
+                        <Route path='/create'
+                            element={ user ? <Create /> : <Navigate to='login'/>} />
+                        <Route path='/recipes/:id' element={<Recipe />} />
+                        <Route path='/login'
+                            element={ !user ? <Login/> : <Navigate to='/create' />} /> 
+                        <Route path='/signup' 
+                            element={ !user ?  <Signup /> : <Navigate to='/create'/>} /> 
+                      </Routes>
 
-                <Footer />
-          </BrowserRouter>
-     
-      </div>
-      )}
+                      <Footer />
+                </BrowserRouter>
+        </div>
+        )}
     </div>
   );
 }

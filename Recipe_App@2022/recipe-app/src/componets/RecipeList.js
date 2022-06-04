@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import { Card, Col, Row} from 'react-bootstrap';
 
 //import styles
 import './RecipeList.css'
@@ -15,17 +15,22 @@ function RecipeList( { recipes}) {
 
    // for non-empty array of recipes
   return (
-     <div className='recipe-list'>
-          { recipes.map(recipe => (
-              <div key={recipe.id} className='card'>
-                  <img src={recipe.image} alt='food-image' />
-                  <h3>{recipe.title}</h3>
-                  <div>Instructions: { recipe.instructions.substring(0, 150)}...</div>
-                  <Link to={`recipes/${recipe.id}`}>Cook</Link>
-              </div>
+        <Row xs={1} md={2} lg={3} className="g-4 list">
+          {recipes.map(recipe => (
+            <Col key={recipe.id} >
+              <Card className='h-100 card'>
+                  <Card.Img variant="top" src={recipe.image} />
+                  <Card.Body>
+                    <Card.Title>{recipe.title}</Card.Title>
+                    <Card.Text>
+                        Instructions: {recipe.instructions.substring(0, 100)}...
+                        <Link to={`recipes/${recipe.id}`}>Cook</Link>
+                    </Card.Text>
+                  </Card.Body>
+              </Card>
+            </Col>
           ))}
-    </div>
+      </Row>
   )
 }
-
 export default RecipeList
